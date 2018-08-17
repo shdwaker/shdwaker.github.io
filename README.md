@@ -1,1 +1,1 @@
-# mybolg-src
+# mybolg-src[![Build Status](https://travis-ci.org/shdwaker/mybolg-src.svg?branch=master)](https://travis-ci.org/shdwaker/mybolg-src)
