@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[Memory Analyzer的使用记录]]></title>
-    <url>%2F2018%2F09%2F05%2F2018-09-05-Memory%20Analyzer%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%2F</url>
+    <url>%2F2018%2F09%2F07%2F2018-09-05-Memory%20Analyzer%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[MAT使用记录下载地址http://www.eclipse.org/mat/downloads.php 问题一下载完成之后，运行弹窗报错：123An error has occurred. See the log file /Users/%username%/.eclipse/1899417313_macosx_cocoa_x86_64/configuration/1507391541586.log. 意思就是系统默认的workspace路径是只读的，只需更换默认位置就好了，需要注意添加参数时位置要在vm参数配置之前。 参考网友遇到的同样问题https://stackoverflow.com/questions/47909239/how-to-run-eclipse-memory-analyzer-on-mac-os 解决办法修改配置MemoryAnalyzer.ini，文件路径在你的下载位置/mat.app/Contents/Eclipse/MemoryAnalyzer.ini，最终的配置模样是 12345678910-startup../Eclipse/plugins/org.eclipse.equinox.launcher_1.5.0.v20180512-1130.jar-data/Users/jindanzi/mat.log--launcher.library../Eclipse/plugins/org.eclipse.equinox.launcher.cocoa.macosx.x86_64_1.1.700.v20180518-1200-vmargs-Xmx4086m-Dorg.eclipse.swt.internal.carbon.smallFonts-XstartOnFirstThread 必须在--launcher.library之前增加12-data/Users/jindanzi/mat.log 否则仍然报错 问题二MAT分析时报错An internal error occurred during: &quot;Parsing heap dump from XXX” 解决办法修改参数-vmargs增加内存大小 12-vmargs-Xmx4086m]]></content>
       <tags>
         <tag>MAT</tag>
@@ -10,20 +10,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hexo + Github 搭建个人技术博客]]></title>
-    <url>%2F2018%2F09%2F05%2FHexo%2BGithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[这是我的第一篇文章，主要用来记录Hexo + Github 搭建个人技术博客过程 Hexo + Github 搭建个人技术博客过程背景作为一个程序员，一直想搞一个个人的技术博客，虽然有很多技术博客网站（CSDN、简书等）都很好用，但本人主要想用记录博客的方式记录一些技术细节，方便以后好查找。本着免费的原则，网上找了很久，终于发现了Hexo，它可以很简单的使用GitHub托管的方式快速搭建一个博客，下面我记录下本人搭建的过程。 前提准备工作 拥有一个GitHub账号 安装Node.js、npm，并了解相关基础 安装Git客户端 本人使用的环境 mac node -v v8.8.1 git –version 2.12.2 新建仓库在GitHub新建一个名为{username}.github.io的仓库，比如你的GitHub用户名是pig，就新建一个pig.github.io的仓库。将来博客搭建好了之后，就可以通过，https://pig.github.io来访问了。 配置SSH key要想提交代码到GitHub，必须有GitHub权限才行。GitHub可以通过配置SSH Key来解决本地跟GitHub服务器的连接安全问题。 配置全局name和email123git config --global user.name "name" git config --global user.email "email" name和email是注册github的昵称和邮箱 生成Key1test More info: Deployment]]></content>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F09%2F07%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy 1test More info: Deployment]]></content>
       <tags>
+        <tag>java</tag>
         <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F09%2F05%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy 1test More info: Deployment]]></content>
-      <tags>
-        <tag>hexo</tag>
-        <tag>java</tag>
-      </tags>
+    <title><![CDATA[2018-09-02-Hexo+Github搭建个人技术博客]]></title>
+    <url>%2F2018%2F09%2F02%2F2018-09-02-Hexo-Github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[这是我的第一篇文章，主要用来记录Hexo + Github 搭建个人技术博客过程 Hexo + Github 搭建个人技术博客过程背景作为一个程序员，一直想搞一个个人的技术博客，虽然有很多技术博客网站（CSDN、简书等）都很好用，但本人主要想用记录博客的方式记录一些技术细节，方便以后好查找。本着免费的原则，网上找了很久，终于发现了Hexo，它可以很简单的使用GitHub托管的方式快速搭建一个博客，下面我记录下本人搭建的过程。 前提准备工作 拥有一个GitHub账号 安装Node.js、npm，并了解相关基础 安装Git客户端 本人使用的环境 mac node -v v8.8.1 git –version 2.12.2 新建仓库在GitHub新建一个名为{username}.github.io的仓库，比如你的GitHub用户名是pig，就新建一个pig.github.io的仓库。将来博客搭建好了之后，就可以通过，https://pig.github.io来访问了。 配置SSH key要想提交代码到GitHub，必须有GitHub权限才行。GitHub可以通过配置SSH Key来解决本地跟GitHub服务器的连接安全问题。 1.配置全局name和email 123git config --global user.name "name" git config --global user.email "email" name和email是注册github的昵称和邮箱 2.生成Key 1ssh-keygen -t rsa -C &quot;your email&quot; 之后会让你输入GitHub账号和密码，输入文件名，默认为id_rsa，路径在~/.ssh/id_rsa 3.设置ssh key 1cat id_rsa.pub 将内容添加到GitHub -&gt; Settings -&gt; SSH and GPG Keys -&gt; New SSH Key Node.js、npm、git安装由于本人是使用的mac123brew install nodebrew install npmbrew install git Hexo安装hexo地址https://hexo.io/zh-cn/docs/index.html 1npm install -g hexo-cli hexo的使用请看文档，不再赘述。 主题配置hexo 我选择使用Next主题 下载主题 在博客根目录出打开命令行输入以下命令:1git clone https://github.com/theme-next/hexo-theme-next themes/next 将主题下载到博客的themes/next文件夹下 启用主题 只需在_config.yml中增加一行 theme: next 主题设定 Next主题相关的配置相当灵活，基本在/themes/next/_config.yml文件中，我的相关配置如下 1234Scheme: Mistsidebar: position: righthighlight_theme: night eighties 开始写文章在命令行界面，进入博客根目录，输入hexo new [post] 2018-09-02-my_first.md就会在source/_posts目录下自动创建名为2018-09-02-my_first.md的markdown文件，然后进行markdown编写就行了 本地预览运行hexo server命令启动Hexo，使用浏览器访问http://localhost:4000/即可浏览博客 发布到GitHub12345deploy: type: git repo: 你的博客git地址 branch: master message: 在_config.yml中配置GitHub相关项目配置后，运行hexo deploy，hexo会将博客生成的静态内容push到GitHub项目下，过一会你通过https://pig.github.io就可以在线看到博客内容了]]></content>
   </entry>
 </search>
