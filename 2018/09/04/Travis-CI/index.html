@@ -92,7 +92,7 @@
 <meta property="og:image" content="https:/2018/09/04/Travis-CI/access_token.png">
 <meta property="og:image" content="https:/2018/09/04/Travis-CI/add_token.png">
 <meta property="og:image" content="https:/2018/09/04/Travis-CI/start_ci.png">
-<meta property="og:updated_time" content="2018-09-10T02:04:33.651Z">
+<meta property="og:updated_time" content="2018-09-10T02:11:06.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Travis CI">
 <meta name="twitter:description" content="前面介绍了Hexo搭建博客的过程，在使用的过程中，push到GitHub上面的实际上是hexo生成的静态文件，源代码依然还在本地。万一源文件丢失或者更换了电脑，怎么更新博客呢，于是想到将源文件也托管到GitHub上，但是每次都要push两次，有没有一个工具可以自动进行部署呢？">
@@ -410,7 +410,7 @@
 <p>将这个文件放在项目的根目录下</p>
 <h2 id="测试CI"><a href="#测试CI" class="headerlink" title="测试CI"></a>测试CI</h2><p>push一个文件到指定分支上，到Travis-CI网站上能看到如下页面</p>
 <p><img src="/2018/09/04/Travis-CI/start_ci.png" alt="start_ci"></p>
-<p>当状态变成<code>passed</code>，打开{username}.github.io就能看到文件的变化，是不是很6！！！</p>
+<p>当状态变成<code>passed</code>，打开{username}.github.io就能看到文件的变化。<br>如此一来，现在我们每次更新博客，只需要将变更push到源代码所在项目，Travis CI监控到变更之后就能自动进行构建发布了，是不是很6！！！</p>
 
       
     </div>
