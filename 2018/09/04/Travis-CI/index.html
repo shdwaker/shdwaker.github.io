@@ -83,19 +83,20 @@
 <meta name="keywords" content="Travis,CI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Travis CI">
-<meta property="og:url" content="https:://shdwaker.github.io/2018/09/07/Travis-CI/index.html">
+<meta property="og:url" content="https:://shdwaker.github.io/2018/09/04/Travis-CI/index.html">
 <meta property="og:site_name" content="学历代表过去，能力代表现在，学习力代表未来">
 <meta property="og:description" content="前面介绍了Hexo搭建博客的过程，在使用的过程中，push到GitHub上面的实际上是hexo生成的静态文件，源代码依然还在本地。万一源文件丢失或者更换了电脑，怎么更新博客呢，于是想到将源文件也托管到GitHub上，但是每次都要push两次，有没有一个工具可以自动进行部署呢？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:/2018/09/07/Travis-CI/travis_ci.png">
-<meta property="og:image" content="https:/2018/09/07/Travis-CI/travis_ci_list.png">
-<meta property="og:image" content="https:/2018/09/07/Travis-CI/access_token.png">
-<meta property="og:image" content="https:/2018/09/07/Travis-CI/add_token.png">
-<meta property="og:updated_time" content="2018-09-10T01:53:30.972Z">
+<meta property="og:image" content="https:/2018/09/04/Travis-CI/travis_ci.png">
+<meta property="og:image" content="https:/2018/09/04/Travis-CI/travis_ci_list.png">
+<meta property="og:image" content="https:/2018/09/04/Travis-CI/access_token.png">
+<meta property="og:image" content="https:/2018/09/04/Travis-CI/add_token.png">
+<meta property="og:image" content="https:/2018/09/04/Travis-CI/start_ci.png">
+<meta property="og:updated_time" content="2018-09-10T02:00:07.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Travis CI">
 <meta name="twitter:description" content="前面介绍了Hexo搭建博客的过程，在使用的过程中，push到GitHub上面的实际上是hexo生成的静态文件，源代码依然还在本地。万一源文件丢失或者更换了电脑，怎么更新博客呢，于是想到将源文件也托管到GitHub上，但是每次都要push两次，有没有一个工具可以自动进行部署呢？">
-<meta name="twitter:image" content="https:/2018/09/07/Travis-CI/travis_ci.png">
+<meta name="twitter:image" content="https:/2018/09/04/Travis-CI/travis_ci.png">
 
 
 
@@ -125,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https:://shdwaker.github.io/2018/09/07/Travis-CI/"/>
+  <link rel="canonical" href="https:://shdwaker.github.io/2018/09/04/Travis-CI/"/>
 
 
 
@@ -302,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https:://shdwaker.github.io/2018/09/07/Travis-CI/">
+    <link itemprop="mainEntityOfPage" href="https:://shdwaker.github.io/2018/09/04/Travis-CI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="暗影行者">
@@ -331,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-07T17:47:55+08:00">
-                2018-09-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-04T17:47:55+08:00">
+                2018-09-04
               </time>
             
 
@@ -350,9 +351,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/09/07/Travis-CI/#comments" itemprop="discussionUrl">
+                <a href="/2018/09/04/Travis-CI/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/07/Travis-CI/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/09/04/Travis-CI/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -387,11 +388,11 @@
 <h2 id="配置Travis-CI"><a href="#配置Travis-CI" class="headerlink" title="配置Travis CI"></a>配置Travis CI</h2><ul>
 <li>使用Github账号登录Travis CI，登录之后，点击页面左侧的加号</li>
 </ul>
-<p><img src="/2018/09/07/Travis-CI/travis_ci.png" alt="travis-ci"></p>
+<p><img src="/2018/09/04/Travis-CI/travis_ci.png" alt="travis-ci"></p>
 <ul>
 <li>会列出你的GitHub项目，点击X开启项目</li>
 </ul>
-<p><img src="/2018/09/07/Travis-CI/travis_ci_list.png" alt="travis_ci_list"></p>
+<p><img src="/2018/09/04/Travis-CI/travis_ci_list.png" alt="travis_ci_list"></p>
 <ul>
 <li>项目配置</li>
 </ul>
@@ -399,15 +400,17 @@
 <ul>
 <li>生成Access Token</li>
 </ul>
-<p>到GitHub -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens点击生成一个token，权限都勾选上<br><img src="/2018/09/07/Travis-CI/access_token.png" alt="access_token"><br>请注意一定要把token值复制下来，否则到其他页面就看不到内容了</p>
+<p>到GitHub -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens点击生成一个token，权限都勾选上<br><img src="/2018/09/04/Travis-CI/access_token.png" alt="access_token"><br>请注意一定要把token值复制下来，否则到其他页面就看不到内容了</p>
 <ul>
 <li>将token添加到项目的环境变量中</li>
 </ul>
-<p><img src="/2018/09/07/Travis-CI/add_token.png" alt="add_token"></p>
+<p><img src="/2018/09/04/Travis-CI/add_token.png" alt="add_token"></p>
 <h2 id="配置自动构建脚本"><a href="#配置自动构建脚本" class="headerlink" title="配置自动构建脚本"></a>配置自动构建脚本</h2><p>Travis CI是根据项目里面的<code>.travis.yml</code>文件来自动构建项目的，配置可以参考官方文档<br>文档：<a href="https://docs.travis-ci.com/user/getting-started/" target="_blank" rel="noopener">https://docs.travis-ci.com/user/getting-started/</a></p>
 <p>我的该文件配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"># Refrecnes:</span><br><span class="line"># https://zespia.tw/blog/2015/01/21/continuous-deployment-to-github-with-travis/</span><br><span class="line"># https://docs.travis-ci.com/user/languages/javascript-with-nodejs</span><br><span class="line"># https://github.com/iissnan/theme-next-docs/blob/master/.travis.yml</span><br><span class="line"># http://changyuheng.me/2015/when-hexo-static-site-meets-github-pages-and-travis-ci/</span><br><span class="line"></span><br><span class="line">language: node_js</span><br><span class="line">node_js: stable</span><br><span class="line"></span><br><span class="line">cache:</span><br><span class="line">  directories:</span><br><span class="line">    - node_modules</span><br><span class="line"></span><br><span class="line">before_install:</span><br><span class="line">    - export TZ=&apos;Asia/Shanghai&apos; # 更改时区</span><br><span class="line"></span><br><span class="line">install:</span><br><span class="line">  - npm install</span><br><span class="line"></span><br><span class="line">before_script:</span><br><span class="line">  - git submodule update --remote --merge</span><br><span class="line"></span><br><span class="line">script:</span><br><span class="line">  - hexo clean  #清除</span><br><span class="line">  - hexo g  #生成</span><br><span class="line"></span><br><span class="line">after_script:</span><br><span class="line">  - git clone https://$&#123;GIT_PAGE_REF&#125; .deploy_git  # GH_REF是最下面配置的仓库地址</span><br><span class="line">  - cd .deploy_git</span><br><span class="line">  - git checkout master</span><br><span class="line">  - cd ../</span><br><span class="line">  - mv .deploy_git/.git/ ./public/   # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit</span><br><span class="line">  - cd ./public</span><br><span class="line">  - git config user.name &quot;github-username&quot;</span><br><span class="line">  - git config user.email &quot;github-email&quot;</span><br><span class="line">  - git add .</span><br><span class="line">  - git commit -m &quot;Travis CI Auto Builder at `date +&quot;%Y-%m-%d %H:%M&quot;`&quot;</span><br><span class="line">  - git push --force --quiet &quot;https://$&#123;GH_TOKEN&#125;@$&#123;GIT_PAGE_REF&#125;&quot; master:master</span><br><span class="line"></span><br><span class="line">branches:</span><br><span class="line">  only:</span><br><span class="line">    - master</span><br><span class="line">env:</span><br><span class="line"> global:</span><br><span class="line">   - GIT_PAGE_REF: github.com/Repositories/&#123;username&#125;.github.io.git</span><br><span class="line"></span><br><span class="line"># configure notifications (email, IRC, campfire etc)</span><br><span class="line"># please update this section to your needs!</span><br><span class="line"># https://docs.travis-ci.com/user/notifications/</span><br><span class="line">notifications:</span><br><span class="line">  email:</span><br><span class="line">    - your-email.com</span><br><span class="line">  on_success: change</span><br><span class="line">  on_failure: always</span><br></pre></td></tr></table></figure></p>
 <p>将这个文件放在项目的根目录下</p>
 <h2 id="测试CI"><a href="#测试CI" class="headerlink" title="测试CI"></a>测试CI</h2><p>push一个文件到指定分支上，到Travis-CI网站上能看到如下页面</p>
+<p><img src="/2018/09/04/Travis-CI/start_ci.png" alt="start_ci"></p>
+<p>当状态变成<code>passed</code>，打开{username}.github.io就能看到文件的变化，是不是很6！！！</p>
 
       
     </div>
@@ -440,8 +443,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/05/Memory Analyzer的使用记录/" rel="next" title="Memory Analyzer的使用记录">
-                <i class="fa fa-chevron-left"></i> Memory Analyzer的使用记录
+              <a href="/2018/09/02/Hexo搭建个人技术博客/" rel="next" title="Hexo搭建个人技术博客">
+                <i class="fa fa-chevron-left"></i> Hexo搭建个人技术博客
               </a>
             
           </div>
@@ -450,8 +453,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/10/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/05/Memory Analyzer的使用记录/" rel="prev" title="Memory Analyzer的使用记录">
+                Memory Analyzer的使用记录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -539,7 +542,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -552,7 +555,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -759,8 +762,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https:://shdwaker.github.io/2018/09/07/Travis-CI/';
-          this.page.identifier = '2018/09/07/Travis-CI/';
+          this.page.url = 'https:://shdwaker.github.io/2018/09/04/Travis-CI/';
+          this.page.identifier = '2018/09/04/Travis-CI/';
           this.page.title = 'Travis CI';
         };
         var d = document, s = d.createElement('script');

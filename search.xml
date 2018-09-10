@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F09%2F10%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy 1test More info: Deployment]]></content>
-      <tags>
-        <tag>java</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Travis CI]]></title>
-    <url>%2F2018%2F09%2F07%2FTravis-CI%2F</url>
-    <content type="text"><![CDATA[前面介绍了Hexo搭建博客的过程，在使用的过程中，push到GitHub上面的实际上是hexo生成的静态文件，源代码依然还在本地。万一源文件丢失或者更换了电脑，怎么更新博客呢，于是想到将源文件也托管到GitHub上，但是每次都要push两次，有没有一个工具可以自动进行部署呢？ Travis CI介绍前面提到，我想做到把源代码放到GitHub上，只要要源代码提交，能自动将代码编译后上传到username.github.io仓库下，既托管了源代码又能自动进行部署，完美！！！这其实就是一个CI的过程，CI是啥，我就不做介绍，自行Google。 Travis CI 是目前新兴的开源持续集成构建项目，它与jenkins，GO的很明显的特别在于采用yaml格式，同时他是在在线的服务，不像jenkins需要你本地打架服务器，简洁清新独树一帜。目前大多数的github项目都已经移入到Travis CI的构建队列中，据说Travis CI每天运行超过4000次完整构建。 项目网址：https://travis-ci.org/ 配置Travis CI 使用Github账号登录Travis CI，登录之后，点击页面左侧的加号 会列出你的GitHub项目，点击X开启项目 项目配置 配置项都选择默认，我们需要配置的是access token 生成Access Token 到GitHub -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens点击生成一个token，权限都勾选上请注意一定要把token值复制下来，否则到其他页面就看不到内容了 将token添加到项目的环境变量中 配置自动构建脚本Travis CI是根据项目里面的.travis.yml文件来自动构建项目的，配置可以参考官方文档文档：https://docs.travis-ci.com/user/getting-started/ 我的该文件配置如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354# Refrecnes:# https://zespia.tw/blog/2015/01/21/continuous-deployment-to-github-with-travis/# https://docs.travis-ci.com/user/languages/javascript-with-nodejs# https://github.com/iissnan/theme-next-docs/blob/master/.travis.yml# http://changyuheng.me/2015/when-hexo-static-site-meets-github-pages-and-travis-ci/language: node_jsnode_js: stablecache: directories: - node_modulesbefore_install: - export TZ=&apos;Asia/Shanghai&apos; # 更改时区install: - npm installbefore_script: - git submodule update --remote --mergescript: - hexo clean #清除 - hexo g #生成after_script: - git clone https://$&#123;GIT_PAGE_REF&#125; .deploy_git # GH_REF是最下面配置的仓库地址 - cd .deploy_git - git checkout master - cd ../ - mv .deploy_git/.git/ ./public/ # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit - cd ./public - git config user.name &quot;github-username&quot; - git config user.email &quot;github-email&quot; - git add . - git commit -m &quot;Travis CI Auto Builder at `date +&quot;%Y-%m-%d %H:%M&quot;`&quot; - git push --force --quiet &quot;https://$&#123;GH_TOKEN&#125;@$&#123;GIT_PAGE_REF&#125;&quot; master:masterbranches: only: - masterenv: global: - GIT_PAGE_REF: github.com/Repositories/&#123;username&#125;.github.io.git# configure notifications (email, IRC, campfire etc)# please update this section to your needs!# https://docs.travis-ci.com/user/notifications/notifications: email: - your-email.com on_success: change on_failure: always 将这个文件放在项目的根目录下 测试CIpush一个文件到指定分支上，到Travis-CI网站上能看到如下页面]]></content>
-      <tags>
-        <tag>Travis</tag>
-        <tag>CI</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Memory Analyzer的使用记录]]></title>
     <url>%2F2018%2F09%2F05%2FMemory%20Analyzer%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[作为一个Java程序员，在系统出现内存泄漏等问题时，可以利用一些工具来分析dump文件，找到内存泄漏的原因，Memory Analyzer是一个很好的工具。 MAT使用记录下载地址http://www.eclipse.org/mat/downloads.php 问题一下载完成之后，运行弹窗报错：123An error has occurred. See the log file /Users/%username%/.eclipse/1899417313_macosx_cocoa_x86_64/configuration/1507391541586.log. 意思就是系统默认的workspace路径是只读的，只需更换默认位置就好了，需要注意添加参数时位置要在vm参数配置之前。 参考网友遇到的同样问题https://stackoverflow.com/questions/47909239/how-to-run-eclipse-memory-analyzer-on-mac-os 解决办法修改配置MemoryAnalyzer.ini，文件路径在你的下载位置/mat.app/Contents/Eclipse/MemoryAnalyzer.ini，最终的配置模样是 12345678910-startup../Eclipse/plugins/org.eclipse.equinox.launcher_1.5.0.v20180512-1130.jar-data/Users/jindanzi/mat.log--launcher.library../Eclipse/plugins/org.eclipse.equinox.launcher.cocoa.macosx.x86_64_1.1.700.v20180518-1200-vmargs-Xmx4086m-Dorg.eclipse.swt.internal.carbon.smallFonts-XstartOnFirstThread 必须在--launcher.library之前增加12-data/Users/jindanzi/mat.log 否则仍然报错 问题二MAT分析时报错An internal error occurred during: &quot;Parsing heap dump from XXX” 解决办法修改参数-vmargs增加内存大小 12-vmargs-Xmx4086m]]></content>
       <tags>
         <tag>MAT</tag>
         <tag>Memory Analyzer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Travis CI]]></title>
+    <url>%2F2018%2F09%2F04%2FTravis-CI%2F</url>
+    <content type="text"><![CDATA[前面介绍了Hexo搭建博客的过程，在使用的过程中，push到GitHub上面的实际上是hexo生成的静态文件，源代码依然还在本地。万一源文件丢失或者更换了电脑，怎么更新博客呢，于是想到将源文件也托管到GitHub上，但是每次都要push两次，有没有一个工具可以自动进行部署呢？ Travis CI介绍前面提到，我想做到把源代码放到GitHub上，只要要源代码提交，能自动将代码编译后上传到username.github.io仓库下，既托管了源代码又能自动进行部署，完美！！！这其实就是一个CI的过程，CI是啥，我就不做介绍，自行Google。 Travis CI 是目前新兴的开源持续集成构建项目，它与jenkins，GO的很明显的特别在于采用yaml格式，同时他是在在线的服务，不像jenkins需要你本地打架服务器，简洁清新独树一帜。目前大多数的github项目都已经移入到Travis CI的构建队列中，据说Travis CI每天运行超过4000次完整构建。 项目网址：https://travis-ci.org/ 配置Travis CI 使用Github账号登录Travis CI，登录之后，点击页面左侧的加号 会列出你的GitHub项目，点击X开启项目 项目配置 配置项都选择默认，我们需要配置的是access token 生成Access Token 到GitHub -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens点击生成一个token，权限都勾选上请注意一定要把token值复制下来，否则到其他页面就看不到内容了 将token添加到项目的环境变量中 配置自动构建脚本Travis CI是根据项目里面的.travis.yml文件来自动构建项目的，配置可以参考官方文档文档：https://docs.travis-ci.com/user/getting-started/ 我的该文件配置如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354# Refrecnes:# https://zespia.tw/blog/2015/01/21/continuous-deployment-to-github-with-travis/# https://docs.travis-ci.com/user/languages/javascript-with-nodejs# https://github.com/iissnan/theme-next-docs/blob/master/.travis.yml# http://changyuheng.me/2015/when-hexo-static-site-meets-github-pages-and-travis-ci/language: node_jsnode_js: stablecache: directories: - node_modulesbefore_install: - export TZ=&apos;Asia/Shanghai&apos; # 更改时区install: - npm installbefore_script: - git submodule update --remote --mergescript: - hexo clean #清除 - hexo g #生成after_script: - git clone https://$&#123;GIT_PAGE_REF&#125; .deploy_git # GH_REF是最下面配置的仓库地址 - cd .deploy_git - git checkout master - cd ../ - mv .deploy_git/.git/ ./public/ # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit - cd ./public - git config user.name &quot;github-username&quot; - git config user.email &quot;github-email&quot; - git add . - git commit -m &quot;Travis CI Auto Builder at `date +&quot;%Y-%m-%d %H:%M&quot;`&quot; - git push --force --quiet &quot;https://$&#123;GH_TOKEN&#125;@$&#123;GIT_PAGE_REF&#125;&quot; master:masterbranches: only: - masterenv: global: - GIT_PAGE_REF: github.com/Repositories/&#123;username&#125;.github.io.git# configure notifications (email, IRC, campfire etc)# please update this section to your needs!# https://docs.travis-ci.com/user/notifications/notifications: email: - your-email.com on_success: change on_failure: always 将这个文件放在项目的根目录下 测试CIpush一个文件到指定分支上，到Travis-CI网站上能看到如下页面 当状态变成passed，打开{username}.github.io就能看到文件的变化，是不是很6！！！]]></content>
+      <tags>
+        <tag>Travis</tag>
+        <tag>CI</tag>
       </tags>
   </entry>
   <entry>
